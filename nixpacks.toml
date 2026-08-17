@@ -1,0 +1,10 @@
+[phases.setup]
+nixPkgs = ["nodejs_20"]
+
+[phases.install]
+# npm install لا npm ci: الأخير يتطلب package-lock.json وهو غير مرفوع مع المشروع.
+# --omit=dev آمن هنا لأن التشغيل يتم عبر tsx وهو ضمن dependencies لا devDependencies.
+cmds = ["npm install --omit=dev --no-audit --no-fund"]
+
+[start]
+cmd = "npm run start"
